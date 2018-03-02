@@ -1,0 +1,21 @@
+<div [hidden]="!loaded">
+  <h3>{{forecast.city}}</h3>
+  <div style="display: flex">
+    <div *ngFor="let day of forecast.days" style="border: 2px solid black">
+      <p>DATE: {{day.date}}</p>
+      <p>TEMP: {{day.temp}}*F</p>
+      <p>WIND: {{day.speed}}m/s {{day.degree}}*</p>
+      <p>WEATHER: {{day.describtion}}</p>
+    </div>
+  </div>
+  <button
+    class="btn"
+    (click)="weather.removeCity(city.name)"
+    *ngIf="!!removable"
+  >
+    Remove
+  </button>
+</div>
+<div [hidden]="!!loaded">
+
+</div>

@@ -1,0 +1,32 @@
+<h1>WEATHER FORECAST</h1>
+<form #adding="ngForm">
+  <input name="new" ngModel required #new="ngModel">
+  <button
+    type="submit"
+    class="btn"
+    (click)="weather.addCity(adding.value.new); adding.reset()"
+  >
+    ADD
+  </button>
+</form>
+<div class="">
+  <h2>YOUR LOCATION:</h2>
+  <div style="height: 250px">
+    <weekly-weather *ngIf="!!current" [city]=current></weekly-weather>
+    <div style="height: 300px" *ngIf="!current">
+
+    </div>
+  </div>
+</div>
+<div class="">
+  <h2>LIST:</h2>
+  <div style="height: 250px"
+    *ngFor="let city of weather.cities"
+  >
+    <weekly-weather
+      [city]=city
+      [removable]=true
+    >
+    </weekly-weather>
+  </div>
+</div>
